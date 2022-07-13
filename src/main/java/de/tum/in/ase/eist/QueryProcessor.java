@@ -1,6 +1,11 @@
 package de.tum.in.ase.eist;
 
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 @Service
 public class QueryProcessor {
 
@@ -10,18 +15,18 @@ public class QueryProcessor {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
                     "writer in the English language and the world's pre-eminent dramatist.";
-        } else if (query.contains("plus")) {
+        } else if (query.contains("largest")) {
            String [] string = query.split(" ");
-           int sum = 0;
+           List<Integer> list = new ArrayList<>();
            for (String s : string ) {
                try {
                    int num = Integer.parseInt(s);
-                   sum += num;
+                   list.add(num);
                } catch (Exception e) {
 
                }
            }
-               return  String.valueOf(sum);
+               return  String.valueOf(Collections.max(list));
 
         } else { // TODO extend the programm here
             return "";
